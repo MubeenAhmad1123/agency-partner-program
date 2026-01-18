@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from 'next';
 import './globals.css';
 import StructuredData from './components/StructuredData';
@@ -45,6 +46,7 @@ export default function RootLayout({
           as="image" 
           type="image/webp"
         />
+        <Analytics />
         <StructuredData />
       </head>
       <body className="antialiased">{children}</body>
