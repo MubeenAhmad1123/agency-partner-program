@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-charcoal: #2C3E50;
+  --color-olive: #6B7455;
+  --color-gold: #FFD700;
+  --color-teal: #14B8A6;
+  --color-off-white: #F7FAFC;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Premium animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Base animation classes - hidden by default */
+.fade-in-up,
+.fade-in-left,
+.fade-in-right,
+.scale-in {
+  opacity: 0;
+}
+
+/* Visible state triggers animation */
+.fade-in-up.visible {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.fade-in-left.visible {
+  animation: fadeInLeft 0.6s ease-out forwards;
+}
+
+.fade-in-right.visible {
+  animation: fadeInRight 0.6s ease-out forwards;
+}
+
+.scale-in.visible {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* Stagger children */
+.stagger-children > * {
+  opacity: 0;
+}
+
+.stagger-children.visible > * {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.stagger-children.visible > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children.visible > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children.visible > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children.visible > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children.visible > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children.visible > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(44, 62, 80, 0.1);
+}
+
+/* Gold shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.gold-shimmer {
+  color: #FFD700;
+  font-weight: 700;
 }
