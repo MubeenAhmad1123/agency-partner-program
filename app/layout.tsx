@@ -13,11 +13,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://your-site.vercel.app',
+    url: 'https://agency-partner-program.vercel.app',
     siteName: 'Mubeen Ahmad - Web Developer',
     title: 'White-Label Landing Pages for Marketing Agencies',
     description: 'Earn 20% commission on landing pages. Healthcare-focused developer. 48-72h delivery.',
   },
+    verification: {
+      google: '6MZf5XMbTLwvBAPLwEB3V_nPEhD6DErnvzPafs8mLLY',
+  },
+
   twitter: {
     card: 'summary_large_image',
     title: 'White-Label Landing Pages for Marketing Agencies',
@@ -32,9 +36,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="canonical" href="https://your-site.vercel.app" />
+           <head>
+        <link rel="canonical" href="https://agency-partner-program.vercel.app" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link 
+          rel="preload" 
+          href="/Mubeen Ahmad.webp" 
+          as="image" 
+          type="image/webp"
+        />
         <StructuredData />
       </head>
       <body className="antialiased">{children}</body>
